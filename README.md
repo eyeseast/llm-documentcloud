@@ -5,7 +5,7 @@
 [![Tests](https://github.com/eyeseast/llm-documentcloud/actions/workflows/test.yml/badge.svg)](https://github.com/eyeseast/llm-documentcloud/actions/workflows/test.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/eyeseast/llm-documentcloud/blob/main/LICENSE)
 
-LLM integrations for DocumentCloud
+LLM integrations for [DocumentCloud](https://www.documentcloud.org)
 
 ## Installation
 
@@ -17,7 +17,15 @@ llm install llm-documentcloud
 
 ## Usage
 
-Usage instructions go here.
+Use the `dc:` fragment to load documents hosted on DocumentCloud.
+
+```sh
+# run a basic prompt
+llm -f dc:71072 'Summarize this document'
+
+# extract tabular data
+uv run llm -f dc:25507045 'Extract the tables in this document as CSV'
+```
 
 ## Development
 
