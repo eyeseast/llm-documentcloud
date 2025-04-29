@@ -1,0 +1,35 @@
+[project]
+name = "llm-documentcloud"
+version = "0.1"
+description = "LLM integrations for DocumentCloud"
+readme = "README.md"
+authors = [{ name = "Chris Amico" }]
+license = "Apache-2.0"
+classifiers = []
+requires-python = ">=3.9"
+dependencies = [
+    "llm",
+    "python-documentcloud>=4.4.1",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "ipython>=8.18.1",
+]
+test = ["pytest>=8.3.5"]
+
+[project.urls]
+Homepage = "https://github.com/eyeseast/llm-documentcloud"
+Changelog = "https://github.com/eyeseast/llm-documentcloud/releases"
+Issues = "https://github.com/eyeseast/llm-documentcloud/issues"
+CI = "https://github.com/eyeseast/llm-documentcloud/actions"
+
+[project.entry-points.llm]
+llm_documentcloud = "llm_documentcloud"
+
+[project.optional-dependencies]
+test = ["pytest"]
