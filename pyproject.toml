@@ -13,6 +13,11 @@ dependencies = ["llm", "python-documentcloud>=4.4.1"]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[dependency-groups]
+dev = [
+    "ipython>=8.18.1",
+]
+
 [project.urls]
 Homepage = "https://github.com/eyeseast/llm-documentcloud"
 Changelog = "https://github.com/eyeseast/llm-documentcloud/releases"
