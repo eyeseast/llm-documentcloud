@@ -50,12 +50,40 @@ def load_document(
     """
     Load a document by ID or URL and return a fragment or attachment, depending on the mode
     """
+    # URL or ID?
+    if argument.startswith("https://"):
+        args = parse_dc_url(argument)
+    else:
+        args = parse_dc_id(argument)
 
-    source = f"dc:{argument}"
     client = DocumentCloud(DC_USERNAME, DC_PASSWORD)
-    doc = client.documents.get(argument)  # let this error for Not Found
+    doc = client.documents.get(args.id)  # let this error for Not Found
 
-    return llm.Fragment(doc.full_text, source)
+    # handle modes
+    if args.mode == "pdf":
+        # pdf mode is just the whole doc
+        return llm.Attachment(url=doc.get_pdf_url())
+
+    # images
+    if args.mode == "image":
+        # one page
+        if args.page:
+            return llm.Attachment(
+                url=doc.get_page_image_url(page=args.page, size="large")
+            )
+        # all pages
+        return [llm.Attachment(url=u) for u in doc.get_page_image_urls(size="large")]
+
+    # text
+    if args.page:
+        text = doc.get_page_text(args.page)
+    else:
+        text = doc.full_text
+
+    # it's possible this will create duplication, since there are multiple ways to get the same resource
+    # consider normalizing URLs
+    source = f"dc:{argument}"
+    return llm.Fragment(text, source)
 
 
 def parse_dc_url(url: str) -> DCArgs:
