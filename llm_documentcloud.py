@@ -68,11 +68,9 @@ def load_document(
     if args.mode == "image":
         # one page
         if args.page:
-            return llm.Attachment(
-                url=doc.get_page_image_url(page=args.page, size="large")
-            )
+            return llm.Attachment(url=doc.get_image_url(page=args.page, size="large"))
         # all pages
-        return [llm.Attachment(url=u) for u in doc.get_page_image_urls(size="large")]
+        return [llm.Attachment(url=u) for u in doc.get_image_url_list(size="large")]
 
     # text
     if args.page:
