@@ -6,20 +6,15 @@ readme = "README.md"
 authors = [{ name = "Chris Amico" }]
 license = "Apache-2.0"
 classifiers = []
-requires-python = ">=3.9"
-dependencies = [
-    "llm",
-    "python-documentcloud>=4.4.1",
-]
+requires-python = ">=3.10"
+dependencies = ["llm", "python-documentcloud>=4.4.1"]
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [dependency-groups]
-dev = [
-    "ipython>=8.18.1",
-]
+dev = ["ipython>=8.18.1"]
 
 [project.urls]
 Homepage = "https://github.com/eyeseast/llm-documentcloud"

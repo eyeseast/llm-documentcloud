@@ -1,7 +1,7 @@
 import pytest
 from llm.plugins import pm, load_plugins
 from documentcloud import DocumentCloud
-from llm_documentcloud import load_document
+from llm_documentcloud import parse_dc_id, parse_dc_url, DCArgs
 
 URLS = [
     "https://www.documentcloud.org/documents/25507045-20250118-ufc-intuit-dome-athlete-pay-and-weights-c-amico/",
@@ -26,11 +26,6 @@ IDS = [
 
 def setup_module(module):
     load_plugins()
-
-
-@pytest.fixture(name="dc")
-def dc_client():
-    return DocumentCloud()
 
 
 def test_plugin_is_installed():

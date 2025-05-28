@@ -1,7 +1,7 @@
 import os
 import re
 from urllib.parse import parse_qs, urlsplit
-from typing import List
+from typing import List, Optional
 
 import llm
 from documentcloud import DocumentCloud
@@ -27,7 +27,7 @@ MODES = {
 class DCArgs:
     "Helper class for passing around args"
 
-    def __init__(self, id: str | int, mode: str = "text", page: int = None):
+    def __init__(self, id: str | int, mode: str = "text", page: Optional[int] = None):
         self.id = id
         self.mode = mode
         self.page = page
