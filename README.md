@@ -15,7 +15,7 @@ Install this plugin in the same environment as [LLM](https://llm.datasette.io/).
 llm install llm-documentcloud
 ```
 
-Add your DocumentCloud credentials to your environment variables. (likely in your shell profile file)
+Add your DocumentCloud credentials to your environment variables (likely in your shell profile file):
 
 ```bash
 export DC_USERNAME=""
