@@ -32,11 +32,14 @@ class DCArgs:
         self.mode = mode
         self.page = page
 
-    def __repr__(self):
-        return f"({self.id}, {self.mode}, {self.page})"
+    def __eq__(self, other):
+        tuple(self) == tuple(other)
 
     def __iter__(self):
         return iter((self.id, self.mode, self.page))
+
+    def __repr__(self):
+        return f"({self.id}, {self.mode}, {self.page})"
 
 
 @llm.hookimpl
@@ -121,7 +124,7 @@ def parse_dc_id(doc_id: str) -> DCArgs:
     (25507045, pdf, 1)
     """
     if not "?" in doc_id:
-        return DCArgs(doc_id)
+        return DCArgs(doc_id.strip())
 
     doc_id, query = doc_id.split("?", 1)
     qs = parse_qs(query)
